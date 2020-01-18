@@ -17,3 +17,5 @@ async function getMovies() {
 
     }
 }
+
+export default getMovies;
