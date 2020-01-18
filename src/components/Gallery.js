@@ -1,7 +1,10 @@
 import React from 'react';
+import Movie from './Movie'
 
-function gallery() {
-    return
+function Gallery() {
+    return <div>
+        <Movie />
+    </div>
 }
 
-export default gallery;
+export default Gallery;

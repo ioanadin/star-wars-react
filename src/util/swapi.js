@@ -1,11 +1,19 @@
+import React from 'react';
+
 const swapi = 'https://swapi.co/api/';
 const films = 'https://swapi.co/api/films/';
 
-function getMovies() {
+async function getMovies() {
     const movies = await fetch(films);
-    if (response.ok === true) {
+    if (movies.ok === true) {
         return await movies.json();
     }
     else {
-        return <h3>error</h3>;
+        return (
+            <div>
+                <h3>error</h3>;
+            </div>
+        )
+
     }
+}
