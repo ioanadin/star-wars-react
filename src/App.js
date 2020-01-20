@@ -12,7 +12,6 @@ import {
 } from "react-router-dom";
 
 
-
 function App() {
   return (
     <Router>
@@ -51,19 +50,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-
-
-
-
-
-
-
-
-
-    // <div className="App">
-    //   <Header />
-    //   <Gallery />
-    // </div>
   );
 }
 

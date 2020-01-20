@@ -21,6 +21,13 @@ class Gallery extends React.Component {
             movieDetails: null
         };
     }
+
+    // let swMovies = [];
+    // for (let i = 0; i < this.state.movieDetails.count; i++) {
+    //     swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
+    // }
+    // return swMovies;
+
     componentDidMount() {
         this.fetchMovieData();
     }
@@ -51,25 +58,26 @@ class Gallery extends React.Component {
             .finally(() => {
                 this.setState({ isLoading: false });
             });
+
+    }
+    makeMovies() {
+        let swMovies = [];
+        for (let i = 0; i < this.state.movieDetails.count; i++) {
+            swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
+        }
+
+        return swMovies;
     }
 
     render() {
+        return (
 
-
-        if (this.state.isLoading) {
-            return <div className='movie-item'>
-                <p> Loading movies...</p>
-            </div>
-        }
-        else {
-            let swMovies = [];
-            for (let i = 0; i < this.state.movieDetails.count; i++) {
-                swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
-            }
-            return swMovies;
-        }
-
+            <>
+                <Header />;
+            {this.state.isLoading ? <p> Loading movies...</p> : this.makeMovies()}
+            </>);
     }
-}
+
+};
 
 export default Gallery;
