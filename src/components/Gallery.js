@@ -1,6 +1,7 @@
 import React from 'react';
 import Movie from './Movie';
 import getMovies from '../util/swapi';
+import Header from './Header';
 
 // function Gallery() {
 //     let apiResponse = getMovies()
@@ -53,6 +54,8 @@ class Gallery extends React.Component {
     }
 
     render() {
+
+
         if (this.state.isLoading) {
             return <div className='movie-item'>
                 <p> Loading movies...</p>
