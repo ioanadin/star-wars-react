@@ -25,8 +25,31 @@ class Gallery extends React.Component {
     }
 
     async fetchMovieData() {
-        const movieDetails = await getMovies();
-        this.setState({ movieDetails: movieDetails, isLoading: false });
+        // const movieDetails = await getMovies();
+        // this.setState({ movieDetails: movieDetails, isLoading: false });
+        // try {
+        //     const movieDetails = await getMovies();
+        //     this.setState({ movieDetails: movieDetails, isLoading: false });
+        // }
+        // catch (err) {
+        //     console.log(err);
+        //     this.setState({
+        //         movieDetails: {
+        //             count: 0
+        //         }, isLoading: false
+        //     });
+        // }
+        getMovies()
+            .then(movieDetails => {
+                console.log(movieDetails);
+                this.setState({ movieDetails });
+            })
+            .catch(() => {
+                this.setState({ movieDetails: { count: 0 } });
+            })
+            .finally(() => {
+                this.setState({ isLoading: false });
+            });
     }
 
     render() {

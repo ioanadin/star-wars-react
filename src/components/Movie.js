@@ -8,6 +8,11 @@ class Movie extends React.Component {
     constructor(props) {
         super(props)
     }
+
+    navigateToDetails() {
+        //.push('movies/${this.props.episode_id});
+    }
+
     render() {
         return <div className='movie-item'>
             {this.props.details.title}
