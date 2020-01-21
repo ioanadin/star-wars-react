@@ -3,6 +3,7 @@ import Movie from './Movie';
 import getMovies from '../util/swapi';
 import Header from './Header';
 
+
 // function Gallery() {
 //     let apiResponse = getMovies()
 //     console.log(apiResponse);
@@ -71,11 +72,11 @@ class Gallery extends React.Component {
 
     render() {
         return (
-
             <>
-                <Header />;
-            {this.state.isLoading ? <p> Loading movies...</p> : this.makeMovies()}
-            </>);
+                <Header />
+                {this.state.isLoading ? <p> Loading movies...</p> : this.makeMovies()}
+            </>
+        );
     }
 
 };
