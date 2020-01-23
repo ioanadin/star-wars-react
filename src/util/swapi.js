@@ -1,6 +1,3 @@
-import React from 'react';
-
-const swapi = 'https://swapi.co/api/';
 const films = 'https://swapi.co/api/films/';
 
 async function fetchData(url) {
@@ -18,4 +15,10 @@ async function getMovies() {
     return await fetchData(films);
 }
 
-export { getMovies, fetchData };
+async function getCharacters(characterUrlArray) {
+    const promises = characterUrlArray.map((url) => fetchData(url));
+    return Promise.all(promises);
+
+}
+
+export { getMovies, getCharacters };

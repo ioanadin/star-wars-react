@@ -1,6 +1,6 @@
 import React from 'react';
 import Movie from './Movie';
-import getMovies from '../util/swapi';
+import { getMovies } from '../util/swapi';
 import Header from './Header';
 
 class Gallery extends React.Component {
