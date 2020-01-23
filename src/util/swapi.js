@@ -3,15 +3,19 @@ import React from 'react';
 const swapi = 'https://swapi.co/api/';
 const films = 'https://swapi.co/api/films/';
 
-async function getMovies() {
-    const movies = await fetch(films);
+async function fetchData(url) {
+    const response = await fetch(url);
 
-    if (movies.ok === true) {
-        return await movies.json();
+    if (response.ok === true) {
+        return await response.json();
     }
     else {
         throw new Error();
     }
 }
 
-export default getMovies;
+async function getMovies() {
+    return await fetchData(films);
+}
+
+export { getMovies, fetchData };

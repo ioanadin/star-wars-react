@@ -3,17 +3,6 @@ import Movie from './Movie';
 import getMovies from '../util/swapi';
 import Header from './Header';
 
-
-// function Gallery() {
-//     let apiResponse = getMovies()
-//     console.log(apiResponse);
-//     return <div>
-//         {/* <Movie title={apiResponse.results[0].title} /> */}
-//         <Movie />
-//     </div>
-// }
-
-
 class Gallery extends React.Component {
     constructor(props) {
         super(props)
@@ -23,34 +12,13 @@ class Gallery extends React.Component {
         };
     }
 
-    // let swMovies = [];
-    // for (let i = 0; i < this.state.movieDetails.count; i++) {
-    //     swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
-    // }
-    // return swMovies;
-
     componentDidMount() {
         this.fetchMovieData();
     }
 
-    async fetchMovieData() {
-        // const movieDetails = await getMovies();
-        // this.setState({ movieDetails: movieDetails, isLoading: false });
-        // try {
-        //     const movieDetails = await getMovies();
-        //     this.setState({ movieDetails: movieDetails, isLoading: false });
-        // }
-        // catch (err) {
-        //     console.log(err);
-        //     this.setState({
-        //         movieDetails: {
-        //             count: 0
-        //         }, isLoading: false
-        //     });
-        // }
+    fetchMovieData() {
         getMovies()
             .then(movieDetails => {
-                console.log(movieDetails);
                 this.setState({ movieDetails });
             })
             .catch(() => {
