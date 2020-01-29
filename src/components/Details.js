@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import CharacterGallery from './CharacterGallery';
 
-
 function Details(props) {
     const details = props.history.location.state;
     return (

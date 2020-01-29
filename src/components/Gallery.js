@@ -13,10 +13,6 @@ class Gallery extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchMovieData();
-    }
-
-    fetchMovieData() {
         getMovies()
             .then(movieDetails => {
                 this.setState({ movieDetails });
@@ -27,12 +23,18 @@ class Gallery extends React.Component {
             .finally(() => {
                 this.setState({ isLoading: false });
             });
-
     }
+
     makeMovies() {
         let swMovies = [];
+
         for (let i = 0; i < this.state.movieDetails.count; i++) {
-            swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
+            swMovies.push(
+                <Movie
+                    key={this.state.movieDetails.results[i].episode_id}
+                    details={this.state.movieDetails.results[i]}
+                />
+            );
         }
 
         return swMovies;
@@ -42,7 +44,7 @@ class Gallery extends React.Component {
         return (
             <>
                 <Header />
-                {this.state.isLoading ? <p> Loading movies...</p> : this.makeMovies()}
+                {this.state.isLoading ? <p>Loading movies...</p> : this.makeMovies()}
             </>
         );
     }
