@@ -1,0 +1,18 @@
+.movie-item {
+    width: 30%;
+    text-align: center;
+    outline: 0px solid #FFE81F;
+    transition: all 0.1s linear;
+    margin-bottom: 25px;
+}
+
+.movie-item img {
+    width: 70%;
+    height: auto;
+}
+
+.movie-item:hover {
+    cursor: pointer;
+    outline-width: 3px;
+    transform: scale(1.01);
+}

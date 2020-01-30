@@ -29,11 +29,15 @@ class Gallery extends React.Component {
     makeMovies() {
         let swMovies = [];
 
-        for (let i = 0; i < this.state.movieDetails.count; i++) {
+        const sortedByReleaseDate = this.state.movieDetails.results.sort((a, b) => {
+            return a.release_date < b.release_date ? -1 : 1;
+        })
+
+        for (let i = 0; i < sortedByReleaseDate.length; i++) {
             swMovies.push(
                 <Movie
-                    key={this.state.movieDetails.results[i].episode_id}
-                    details={this.state.movieDetails.results[i]}
+                    key={sortedByReleaseDate[i].episode_id}
+                    details={sortedByReleaseDate[i]}
                 />
             );
         }
