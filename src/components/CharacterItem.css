@@ -1,0 +1,14 @@
+.character-item {
+    outline: 1px solid #FFE81F;
+    margin: 10px 30px;
+    padding: 0 10px;
+    transition: all 0.2s linear;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 20px;
+}
+
+.character-item:hover {
+    cursor: pointer;
+    outline-width: 3px;
+    transform: scale(1.05);
+}

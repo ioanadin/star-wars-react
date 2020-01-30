@@ -1,8 +1,8 @@
 .episode-title, .episode-id {
     text-align: center;
+    font-family: 'Pathway Gothic One', sans-serif;
 }
 
 .episode-title {
-    font-family: 'Pathway Gothic One', sans-serif;
     font-size: 50px;
 }

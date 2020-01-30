@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { getCharacters } from '../util/swapi';
 import CharacterItem from './CharacterItem';
+import './CharacterGallery.css';
 
 class CharacterGallery extends React.Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class CharacterGallery extends React.Component {
     }
 
     render() {
-        return this.makeCharacterItems();
+        return <div className="character-gallery">{this.makeCharacterItems()}</div>;
     }
 }
 

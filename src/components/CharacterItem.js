@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './CharacterItem.css';
 
 class CharacterItem extends React.Component {
     navigateToCharacterDetails = () => {
@@ -8,7 +9,7 @@ class CharacterItem extends React.Component {
 
     render() {
         return (
-            <div onClick={this.navigateToCharacterDetails}>
+            <div className="character-item" onClick={this.navigateToCharacterDetails}>
                 <p>{this.props.character.name}</p>
             </div>
         );
