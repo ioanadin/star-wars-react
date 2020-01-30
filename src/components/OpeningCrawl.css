@@ -6,6 +6,7 @@
 .opening-crawl-container {
     perspective: 400px;
     padding: 0 25%;
+    border-bottom: 1px solid #feda4a;
 }
 
 .opening-crawl-fade {
