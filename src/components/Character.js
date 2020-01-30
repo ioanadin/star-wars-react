@@ -1,8 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 function Character(props) {
     const character = props.history.location.state;
+
+    if (character === undefined) {
+        return <Redirect to="/" />
+    }
 
     return (
         <div>

@@ -1,9 +1,14 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import CharacterGallery from './CharacterGallery';
 
 function Details(props) {
     const details = props.history.location.state;
+
+    if (details === undefined) {
+        return <Redirect to="/" />
+    }
+
     return (
         <div>
             <div>{details.opening_crawl} </div>
