@@ -30,7 +30,7 @@ class Gallery extends React.Component {
         let swMovies = [];
 
         const sortedByReleaseDate = this.state.movieDetails.results.sort((a, b) => {
-            return a.release_date < b.release_date ? -1 : 1;
+            return a.release_date > b.release_date ? -1 : 1;
         })
 
         for (let i = 0; i < sortedByReleaseDate.length; i++) {

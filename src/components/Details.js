@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Redirect } from 'react-router-dom';
 import CharacterGallery from './CharacterGallery';
+import OpeningCrawl from './OpeningCrawl';
 
 function Details(props) {
     const details = props.history.location.state;
@@ -11,7 +12,7 @@ function Details(props) {
 
     return (
         <div>
-            <div>{details.opening_crawl} </div>
+            <OpeningCrawl text={details.opening_crawl} />
             <h1>{details.title}</h1>
             <h3>Episode {details.episode_id}</h3>
             <div><CharacterGallery urls={details.characters} /></div>
