@@ -2,6 +2,7 @@ import React from 'react';
 import Movie from './Movie';
 import { getMovies } from '../util/swapi';
 import Header from './Header';
+import './Gallery.css';
 
 class Gallery extends React.Component {
     constructor(props) {
@@ -44,7 +45,9 @@ class Gallery extends React.Component {
         return (
             <>
                 <Header />
-                {this.state.isLoading ? <p>Loading movies...</p> : this.makeMovies()}
+                <div className="movies-container">
+                    {this.state.isLoading ? <p>Loading movies...</p> : this.makeMovies()}
+                </div>
             </>
         );
     }
