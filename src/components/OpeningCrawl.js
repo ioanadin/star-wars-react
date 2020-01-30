@@ -7,8 +7,8 @@ function OpeningCrawl(props) {
             <div className='opening-crawl-fade'>
             </div>
             <div className='opening-crawl-container'>
+                <p className='opening-crawl-text'>{props.text}</p>
             </div>
-            <p className='opening-crawl-text'>{props.text}</p>
         </div>
     )
 }
