@@ -8,8 +8,13 @@ class CharacterItem extends React.Component {
     }
 
     render() {
+        const isSelectedGender = this.props.selectedGender === this.props.character.gender;
+        const isAllGender = this.props.selectedGender === 'all';
+
+        const className = isSelectedGender || isAllGender ? '' : 'character-hidden';
+
         return (
-            <div className="character-item" onClick={this.navigateToCharacterDetails}>
+            <div className={`character-item ${className}`} onClick={this.navigateToCharacterDetails}>
                 <p>{this.props.character.name}</p>
             </div>
         );

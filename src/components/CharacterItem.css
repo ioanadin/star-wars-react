@@ -12,3 +12,8 @@
     outline-width: 3px;
     transform: scale(1.05);
 }
+
+.character-hidden {
+    opacity: 0.3;
+    pointer-events: none;
+}
