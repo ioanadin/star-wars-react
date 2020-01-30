@@ -8,19 +8,23 @@ class CharacterGallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            characters: []
+            characters: [],
+            filteredCharacters: []
         };
     }
 
     async componentDidMount() {
         const characters = await getCharacters(this.props.urls);
-        this.setState({ characters });
+        this.setState({
+            characters: characters,
+            filteredCharacters: characters
+        });
     }
 
     makeCharacterItems() {
         const characterItems = [];
 
-        for (let i = 0; i < this.state.characters.length; i++) {
+        for (let i = 0; i < this.state.filteredCharacters.length; i++) {
             characterItems.push(
                 <CharacterItem character={this.state.characters[i]} />
             );
@@ -30,7 +34,16 @@ class CharacterGallery extends React.Component {
     }
 
     render() {
-        return <div className="character-gallery">{this.makeCharacterItems()}</div>;
+        return (
+            <div>
+                <div className="character-gallery-filter">
+                    <button>ALL</button>
+                    <button>MALE</button>
+                    <button>FEMALE</button>
+                </div>
+                <div className="character-gallery">{this.makeCharacterItems()}</div>
+            </div>
+        );
     }
 }
 
