@@ -36,6 +36,7 @@ class CharacterGallery extends React.Component {
         for (let i = 0; i < this.state.characters.length; i++) {
             characterItems.push(
                 <CharacterItem
+                    key={this.state.characters[i].name}
                     selectedGender={this.state.selectedGender}
                     character={this.state.characters[i]}
                 />
