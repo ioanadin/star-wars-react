@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Gallery from './components/Gallery';
 import Details from './components/Details'
 import Character from './components/Character'
