@@ -15,7 +15,7 @@ class CharacterGallery extends React.Component {
 
     async componentDidMount() {
         const characters = await getCharacters(this.props.urls);
-        this.setState({ characters: characters });
+        this.setState({ characters });
     }
 
     showMaleGender = () => {
@@ -30,22 +30,6 @@ class CharacterGallery extends React.Component {
         this.setState({ selectedGender: 'all' });
     }
 
-    makeCharacterItems() {
-        const characterItems = [];
-
-        for (let i = 0; i < this.state.characters.length; i++) {
-            characterItems.push(
-                <CharacterItem
-                    key={this.state.characters[i].name}
-                    selectedGender={this.state.selectedGender}
-                    character={this.state.characters[i]}
-                />
-            );
-        }
-
-        return characterItems;
-    }
-
     render() {
         return (
             <div>
@@ -54,7 +38,17 @@ class CharacterGallery extends React.Component {
                     <button onClick={this.showMaleGender}>MALE</button>
                     <button onClick={this.showFemaleGender}>FEMALE</button>
                 </div>
-                <div className="character-gallery">{this.makeCharacterItems()}</div>
+                <div className="character-gallery">
+                    {
+                        this.state.characters.map((character) => {
+                            return <CharacterItem
+                                key={character.name}
+                                selectedGender={this.state.selectedGender}
+                                character={character}
+                            />
+                        })
+                    }
+                </div>
             </div>
         );
     }
