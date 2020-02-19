@@ -1,33 +1,21 @@
 import React from 'react';
-import './Movie.css';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import matchEpisodeToPicture from '../util/matchEpisodeToPicture';
+import './Movie.css';
 
-class Movie extends React.Component {
-    navigateToDetails = () => {
-        this.props.history.push("/movie-details", this.props.details);
+function Movie({ details }) {
+    const history = useHistory();
+    const imageUrl = matchEpisodeToPicture(details.episode_id);
+
+    function navigateToDetails() {
+        history.push("/movie-details", details);
     }
 
-    render() {
-        const imageUrl = matchEpisodeToPicture(this.props.details.episode_id);
-        return (
-            <div className='movie-item' onClick={this.navigateToDetails}>
-                <img src={imageUrl} alt="star wars movie poster" />
-                {/*<div className="movie-item-name">
-                    <h2>{this.props.details.title}</h2>
-                </div>
-
-                <div className='movie-item-image'>
-
-                </div>
-
-                 
-                <br />
-                {this.props.details.episode_id}
-                <br />
-                {this.props.details.release_date} */}
-            </div>
-        );
-    }
+    return (
+        <div className='movie-item' onClick={navigateToDetails}>
+            <img src={imageUrl} alt="star wars movie poster" />
+        </div>
+    );
 }
-export default withRouter(Movie);
+
+export default Movie;
