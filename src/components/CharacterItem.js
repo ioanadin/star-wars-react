@@ -1,24 +1,23 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './CharacterItem.css';
 
-class CharacterItem extends React.Component {
-    navigateToCharacterDetails = () => {
-        this.props.history.push("/character", this.props.character);
+function CharacterItem({ character, selectedGender }) {
+    const history = useHistory();
+
+    function navigateToCharacterDetails() {
+        history.push("/character", character);
     }
 
-    render() {
-        const isSelectedGender = this.props.selectedGender === this.props.character.gender;
-        const isAllGender = this.props.selectedGender === 'all';
+    const isSelectedGender = selectedGender === character.gender;
+    const isAllGender = selectedGender === 'all';
+    const className = isSelectedGender || isAllGender ? '' : 'character-hidden';
 
-        const className = isSelectedGender || isAllGender ? '' : 'character-hidden';
-
-        return (
-            <div className={`character-item ${className}`} onClick={this.navigateToCharacterDetails}>
-                <p>{this.props.character.name}</p>
-            </div>
-        );
-    }
+    return (
+        <div className={`character-item ${className}`} onClick={navigateToCharacterDetails}>
+            <p>{character.name}</p>
+        </div>
+    );
 }
 
-export default withRouter(CharacterItem);
+export default CharacterItem;
