@@ -3,7 +3,7 @@ function matchEpisodeToPicture(episodeId) {
         case 1:
             return '/Star-Wars-Episode-I-The-Phantom-Menace.jpg';
         case 2:
-            return '/Star-Wars-Episode-II-Attack-Of-The-Clones.jpg';;
+            return '/Star-Wars-Episode-II-Attack-Of-The-Clones.jpg';
         case 3:
             return '/Star-Wars-Episode-III-Revenge-Of-The-Sith.jpg';
         case 4:
