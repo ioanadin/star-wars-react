@@ -1,11 +1,12 @@
 import React from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import './Character.css';
 
-function Character(props) {
-    const character = props.history.location.state;
+function Character() {
+    const history = useHistory();
+    const character = history.location.state;
 
-    if (character === undefined) {
+    if (!character) {
         return <Redirect to="/" />
     }
 
@@ -30,4 +31,4 @@ function Character(props) {
     );
 };
 
-export default withRouter(Character);
+export default Character;
