@@ -31,33 +31,3 @@ function Character(props) {
 };
 
 export default withRouter(Character);
-
-/**
-birth_year
-"19BBY"
-created
-"2014-12-10T15:20:09.791000Z"
-edited
-"2014-12-20T21:17:50.315000Z"
-eye_color
-"brown"
-
-films
-["https://swapi.co/api/films/2/", "https://swapi.co…]
-gender
-"female"
-hair_color
-"brown"
-height
-"150"
-homeworld
-"https://swapi.co/api/planets/2/"
-mass
-"49"
-name
-"Leia Organa"
-skin_color
-"light"
-
-species
-["https: */
