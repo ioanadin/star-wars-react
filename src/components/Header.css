@@ -4,6 +4,6 @@
     display: flex;
 }
 
-img {
-    height: 300px;
+.header img {
+    height: 200px;
 }

@@ -1,52 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Movie from './Movie';
 import { getMovies } from '../util/swapi';
 import Header from './Header';
+import './Gallery.css';
 
-class Gallery extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            isLoading: true,
-            movieDetails: null
+function Gallery() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [movieDetails, setMovieDetails] = useState([]);
+
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            const response = await getMovies();
+            setMovieDetails(response.results);
+            setIsLoading(false);
         };
-    }
+        fetchInitialData();
+    }, []);
 
-    componentDidMount() {
-        this.fetchMovieData();
-    }
+    const sortedByReleaseDate = movieDetails.sort((a, b) => {
+        return a.release_date > b.release_date ? -1 : 1;
+    });
 
-    fetchMovieData() {
-        getMovies()
-            .then(movieDetails => {
-                this.setState({ movieDetails });
-            })
-            .catch(() => {
-                this.setState({ movieDetails: { count: 0 } });
-            })
-            .finally(() => {
-                this.setState({ isLoading: false });
-            });
-
-    }
-    makeMovies() {
-        let swMovies = [];
-        for (let i = 0; i < this.state.movieDetails.count; i++) {
-            swMovies.push(<Movie details={this.state.movieDetails.results[i]} />)
-        }
-
-        return swMovies;
-    }
-
-    render() {
-        return (
-            <>
-                <Header />
-                {this.state.isLoading ? <p> Loading movies...</p> : this.makeMovies()}
-            </>
-        );
-    }
-
+    return (
+        <>
+            <Header />
+            <div className="movies-container">
+                {
+                    isLoading ?
+                        <p>Loading movies...</p> :
+                        sortedByReleaseDate.map((movie) => {
+                            return <Movie
+                                key={movie.episode_id}
+                                details={movie}
+                            />
+                        })
+                }
+            </div>
+        </>
+    );
 };
 
 export default Gallery;

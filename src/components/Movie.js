@@ -1,30 +1,21 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import matchEpisodeToPicture from '../util/matchEpisodeToPicture';
 import './Movie.css';
-import swapi from '../util/swapi';
-import getMovies from '../util/swapi';
-import { withRouter } from 'react-router-dom';
 
+function Movie({ details }) {
+    const history = useHistory();
+    const imageUrl = matchEpisodeToPicture(details.episode_id);
 
-class Movie extends React.Component {
-    constructor(props) {
-        console.log(props)
-        super(props)
+    function navigateToDetails() {
+        history.push("/movie-details", details);
     }
 
-    navigateToDetails = () => {
-        //.push('movies/${this.props.episode_id});
-        this.props.history.push("/movie-details", this.props.details);
-
-    }
-
-    render() {
-        return <div className='movie-item' onClick={this.navigateToDetails}>
-            {this.props.details.title}
-            <br />
-            {this.props.details.episode_id}
-            <br />
-            {this.props.details.release_date}
+    return (
+        <div className='movie-item' onClick={navigateToDetails}>
+            <img src={imageUrl} alt="star wars movie poster" />
         </div>
-    }
+    );
 }
-export default withRouter(Movie);
+
+export default Movie;

@@ -1,13 +1,11 @@
 import React from 'react';
-import './App.css';
 import Gallery from './components/Gallery';
 import Details from './components/Details'
 import Character from './components/Character'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 
 
@@ -24,7 +22,7 @@ function App() {
           <Details />
         </Route>
 
-        <Route path="/characters">
+        <Route path="/character">
           <Character />
         </Route>
 

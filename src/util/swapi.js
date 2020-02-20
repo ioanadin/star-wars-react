@@ -17,8 +17,7 @@ async function getMovies() {
 
 async function getCharacters(characterUrlArray) {
     const promises = characterUrlArray.map((url) => fetchData(url));
-    return Promise.all(promises);
-
+    return await Promise.all(promises);
 }
 
 export { getMovies, getCharacters };
