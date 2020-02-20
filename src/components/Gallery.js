@@ -9,11 +9,12 @@ function Gallery() {
     const [movieDetails, setMovieDetails] = useState([]);
 
     useEffect(() => {
-        getMovies()
-            .then(response => {
-                setMovieDetails(response.results);
-                setIsLoading(false);
-            });
+        const fetchInitialData = async () => {
+            const response = await getMovies();
+            setMovieDetails(response.results);
+            setIsLoading(false);
+        };
+        fetchInitialData();
     }, []);
 
     const sortedByReleaseDate = movieDetails.sort((a, b) => {
