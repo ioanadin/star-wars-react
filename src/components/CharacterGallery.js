@@ -1,58 +1,41 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { getCharacters } from '../util/swapi';
 import CharacterItem from './CharacterItem';
 import './CharacterGallery.css';
 
-class CharacterGallery extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            characters: [],
-            selectedGender: 'all'
+function CharacterGallery(props) {
+    const [characters, setCharacters] = useState([]);
+    const [selectedGender, setSelectedGender] = useState('all');
+
+    useEffect(() => {
+        const fetchInitialData = async () => {
+            const response = await getCharacters(props.urls);
+            setCharacters(response);
         };
-    }
+        fetchInitialData();
+    }, [props.urls]);
 
-    async componentDidMount() {
-        const characters = await getCharacters(this.props.urls);
-        this.setState({ characters });
-    }
-
-    showMaleGender = () => {
-        this.setState({ selectedGender: 'male' });
-    }
-
-    showFemaleGender = () => {
-        this.setState({ selectedGender: 'female' });
-    }
-
-    showAllGenders = () => {
-        this.setState({ selectedGender: 'all' });
-    }
-
-    render() {
-        return (
-            <div>
-                <div className="character-gallery-filter">
-                    <button onClick={this.showAllGenders}>ALL</button>
-                    <button onClick={this.showMaleGender}>MALE</button>
-                    <button onClick={this.showFemaleGender}>FEMALE</button>
-                </div>
-                <div className="character-gallery">
-                    {
-                        this.state.characters.map((character) => {
-                            return <CharacterItem
-                                key={character.name}
-                                selectedGender={this.state.selectedGender}
-                                character={character}
-                            />
-                        })
-                    }
-                </div>
+    return (
+        <div>
+            <div className="character-gallery-filter">
+                <button onClick={() => setSelectedGender('all')}>ALL</button>
+                <button onClick={() => setSelectedGender('male')}>MALE</button>
+                <button onClick={() => setSelectedGender('female')}>FEMALE</button>
             </div>
-        );
-    }
+            <div className="character-gallery">
+                {
+                    characters.map((character) => {
+                        return <CharacterItem
+                            key={character.name}
+                            selectedGender={selectedGender}
+                            character={character}
+                        />
+                    })
+                }
+            </div>
+        </div>
+    );
+
 }
 
-
-export default withRouter(CharacterGallery);
+export default CharacterGallery;
